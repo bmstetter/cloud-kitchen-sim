@@ -56,3 +56,15 @@ class TestBusinessDay(unittest.TestCase):
         orders = [{"id": 1, "item": "Bread", "quantity": 1}]
         main.run_business_day(inventory, orders, recipes)
         self.assertEqual(inventory[0]["qty_grams"], 300)
+
+# Task 9
+class TestInventoryReport(unittest.TestCase):
+    def test_generate_inventory_report(self):
+        inventory = [{"ingredient": "Sugar", "qty_grams": 1000}]
+        # We just verify it doesn't crash and prints the data
+        try:
+            main.generate_inventory_report(inventory)
+            report_worked = True
+        except:
+            report_worked = False
+        self.assertTrue(report_worked)

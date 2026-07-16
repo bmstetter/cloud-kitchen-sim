@@ -99,3 +99,10 @@ def run_business_day(inventory, orders, recipes):
     process_all_orders(inventory, orders, recipes)
     print("--- Business Day Complete ---")
     return inventory
+
+# Task 9: Inventory Report
+def generate_inventory_report(inventory):
+    """Prints a clear summary of all ingredients and their current levels."""
+    print("\n--- Current Inventory Status ---")
+    for item in inventory:
+        print(f"Ingredient: {item['ingredient']} | Stock: {item['qty_grams']}g")
