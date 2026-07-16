@@ -1,0 +1,13 @@
+Reflection on AI-Assisted Coding
+
+Working on the Cloud Kitchen Simulation with AI as a partner was an exercise in balancing speed with technical oversight. AI allowed me to move significantly faster by scaffolding the initial data structures and generating boilerplate unit tests. However, the experience highlighted that AI is a tool for generation, not for verification; I had to act as the "Reviewer" and "Decision-Maker" to ensure the logic actually met the business requirements.
+
+AI often made questionable assumptions regarding the data schema. For instance, in Task 5, the AI initially assumed the inventory list was a dictionary, whereas the provided seed data was a list of dictionaries. I had to reject these initial code blocks, debug the errors, and redirect the AI to interact with the data exactly as it was provided in seed_data.py. This taught me that the "Navigator" role—defining the constraints—is far more important than the "Coder" role.
+
+Unit testing was the most critical part of this workflow. Whenever the AI provided a solution, I didn't just run it; I wrote tests to break it. When a test failed, I used the Debugging Prompt to ask the AI to explain the logic, which helped me identify issues like cumulative inventory errors where deductions were being reset between function calls. Testing served as the ground truth that kept the AI’s "hallucinations" in check.
+
+I maintained context by strictly updating the PROJECT_SPEC.md file after every two tasks. This acted as an "external memory" that prevented the AI from forgetting the business rules, such as the 1,000g low-stock threshold or the 5-day expiry window.
+
+If I were to do this project again, I would spend more time during the "Planning" phase to standardize the function return types. A significant amount of time was spent reconciling different formats of inventory reports. Overall, this project demonstrated that while AI can write code, the developer’s responsibility is to maintain the architecture and verify the integrity of the business rules.
+
+The shift to a more complex, nested data structure for the orders provided a final challenge. It forced me to move beyond basic list iteration and implement nested loops to handle individual items within orders. This required careful synchronization between my main.py functions and the key names defined in my updated seed_data.py. Ultimately, this project was a masterclass in modular development and strict requirement adherence.

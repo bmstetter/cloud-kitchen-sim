@@ -1,25 +1,65 @@
-Task 1
+AI Development Usage Log
 
-"How do I setup the project files?"
+Date
 
-Guided setup of directory structure and file creation.
+Task
 
-Simple setup; no issues.
+AI Interaction/Prompt
 
-Task 2
+My Review/Decision
 
-"Create PROJECT_SPEC.md"
+2026-07-15
 
-Generated project spec with business rules and purpose.
+Setup
 
-Good for keeping track of the simulation rules.
+Troubleshooting Git 403 access error.
 
-Task 3
+Researched and configured SSH keys instead of HTTPS.
 
-"Write code to load/inspect data"
+2026-07-16
 
-Created main.py to print seed_data structures.
+Tasks 4-5
 
-Verified data access; structure is clear.
+"Implement Task 4: Recipe Lookup. Keep code simple."
 
-Task 4.1	"Implement Task 4.1: Define the get_recipe(item_name) function in main.py."	Defining the core lookup logic using seed_data.RECIPES.	Initial implementation; need to handle edge cases next.
+Rejected initial assumption that inventory was a dictionary; forced AI to use the provided list-of-dicts structure from seed data.
+
+2026-07-16
+
+Task 6-7
+
+"Implement Task 6: Fulfillment Logic. Ensure deduction is cumulative."
+
+AI initially reset inventory; I caught this in testing and required a loop to maintain persistent state across multiple orders.
+
+2026-07-16
+
+Task 8
+
+"Implement Task 8: Business Day Manager."
+
+Added a print-out of failure reasons to ensure the requirements for Task 6 and 7 were met for failed orders.
+
+2026-07-16
+
+Task 10
+
+"Implement restock logic with a 1,000g threshold."
+
+Added logic to handle expiry dates; verified the 5-day window requirement against the provided date strings.
+
+2026-07-16
+
+Refactoring
+
+"Review code for clarity and add docstrings."
+
+Accepted docstrings, but manually updated variable names to be more descriptive.
+
+2026-07-16
+
+Final Test
+
+"Generate test suite for all tasks."
+
+AI provided tests; I manually synced the test logic with the actual function signatures to fix import errors.
