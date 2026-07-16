@@ -1,33 +1,32 @@
+### 2. `main.py` 
+from copy import deepcopy
 import seed_data
 
-def display_data_structures():
-    """
-    Loads and prints the major data structures from seed_data.py
-    to verify format and accessibility.
-    """
-    print("\n--- Recipes ---")
-    for item, ingredients in seed_data.RECIPES.items():
-        print(f"Item: {item} | Ingredients: {ingredients}")
-
-    print("\n--- Inventory ---")
-    for ing in seed_data.INVENTORY:
-        print(f"Name: {ing['name']} | Qty: {ing['quantity']}g | Expiry: {ing['expiry_date']}")
-
-    print("\n--- Orders ---")
-    for order in seed_data.ORDERS:
-        print(f"Order ID: {order['id']} | Item: {order['item']} | Qty: {order['quantity']}")
-
-    print("\n--- Restock Log ---")
-    for record in seed_data.RESTOCK:
-        print(f"Ingredient: {record['ingredient']} | Amount: {record['amount']}g")
-
-    print("\n--- Delivery Status ---")
-    for status in seed_data.STATUS:
-        print(f"Order ID: {status['order_id']} | Delivered: {status['delivered']}")
+def load_recipes(): return seed_data.recipes
+def load_inventory(): return deepcopy(seed_data.inventory)
+def load_orders(): return seed_data.orders
+def load_restock(): return seed_data.restock
+def load_status(): return deepcopy(seed_data.status)
 
 if __name__ == "__main__":
-    try:
-        display_data_structures()
-        print("\nTask 3: Data inspection complete.")
-    except Exception as e:
-        print(f"Task 3 Error: {e}")
+    print(f"Data Loaded: {len(load_recipes())} recipes.")
+
+# ... existing code ...
+
+def find_recipe_by_name(recipe_data, item_name):
+    """Finds a recipe by name. Returns the recipe dict or None if not found."""
+    for recipe in recipe_data:
+        if recipe["name"] == item_name:
+            return recipe
+    return None
+
+def calculate_ingredient_requirements(recipe, quantity):
+    """Calculates total grams needed for an order based on recipe and quantity."""
+    requirements = []
+    for ingredient in recipe["ingredients"]:
+        requirements.append({
+            "name": ingredient["name"],
+            "required_qty_grams": ingredient["qty_grams"] * quantity
+        })
+    return requirements
+``
