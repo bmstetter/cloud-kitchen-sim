@@ -68,3 +68,12 @@ class TestInventoryReport(unittest.TestCase):
         except:
             report_worked = False
         self.assertTrue(report_worked)
+
+# Task 10
+class TestRestock(unittest.TestCase):
+    def test_check_and_restock(self):
+        inventory = [{"ingredient": "Flour", "qty_grams": 100}]
+        restock = [{"ingredient": "Flour", "amount": 1000}]
+        main.check_and_restock(inventory, restock, threshold=200)
+        # Should restock because 100 < 200
+        self.assertEqual(inventory[0]["qty_grams"], 1100)

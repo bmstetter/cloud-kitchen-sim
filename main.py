@@ -106,3 +106,15 @@ def generate_inventory_report(inventory):
     print("\n--- Current Inventory Status ---")
     for item in inventory:
         print(f"Ingredient: {item['ingredient']} | Stock: {item['qty_grams']}g")
+
+# Task 10: Restock Logic
+def check_and_restock(inventory, restock_data, threshold=500):
+    """
+    Checks if an ingredient is below the threshold and adds stock.
+    """
+    for item in inventory:
+        if item["qty_grams"] < threshold:
+            for r in restock_data:
+                if r["ingredient"] == item["ingredient"]:
+                    item["qty_grams"] += r["amount"]
+                    print(f"Restocked {item['ingredient']} by {r['amount']}g.")
