@@ -67,3 +67,25 @@ def deduct_inventory(inventory_data, requirements):
         inv_item = inventory_lookup.get(req["name"])
         if inv_item:
             inv_item["qty_grams"] -= req["required_qty_grams"]
+
+# Task 7
+
+def process_all_orders(inventory_data, orders, recipes):
+    """
+    Processes a list of orders.
+    Checks availability and deducts inventory if available.
+    """
+    for order in orders:
+        recipe = find_recipe_by_name(recipes, order["item"])
+        if not recipe:
+            print(f"Recipe for {order['item']} not found.")
+            continue
+            
+        requirements = calculate_ingredient_requirements(recipe, order["quantity"])
+        availability = check_inventory_availability(inventory_data, requirements)
+        
+        if availability["all_available"]:
+            deduct_inventory(inventory_data, requirements)
+            print(f"Order {order['id']} processed successfully.")
+        else:
+            print(f"Order {order['id']} failed: Insufficient ingredients.")
