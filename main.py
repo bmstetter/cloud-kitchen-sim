@@ -89,3 +89,13 @@ def process_all_orders(inventory_data, orders, recipes):
             print(f"Order {order['id']} processed successfully.")
         else:
             print(f"Order {order['id']} failed: Insufficient ingredients.")
+        
+# Task 8: Business Day Manager
+def run_business_day(inventory, orders, recipes):
+    """
+    Simulates a full business day: processes all orders.
+    """
+    print("--- Starting Business Day ---")
+    process_all_orders(inventory, orders, recipes)
+    print("--- Business Day Complete ---")
+    return inventory

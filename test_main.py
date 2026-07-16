@@ -47,3 +47,12 @@ class TestOrderProcessing(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main() 
+
+# Task 8
+class TestBusinessDay(unittest.TestCase):
+    def test_run_business_day(self):
+        inventory = [{"ingredient": "Flour", "qty_grams": 500}]
+        recipes = [{"name": "Bread", "ingredients": [{"name": "Flour", "qty_grams": 200}]}]
+        orders = [{"id": 1, "item": "Bread", "quantity": 1}]
+        main.run_business_day(inventory, orders, recipes)
+        self.assertEqual(inventory[0]["qty_grams"], 300)
