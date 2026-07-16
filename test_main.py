@@ -40,3 +40,16 @@ class TestInventoryAvailability(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# Task 6
+
+class TestOrderFulfillment(unittest.TestCase):
+    def test_deduct_inventory(self):
+        inventory = [{"ingredient": "Flour", "qty_grams": 500}]
+        requirements = [{"name": "Flour", "required_qty_grams": 200}]
+        main.deduct_inventory(inventory, requirements)
+        # 500 - 200 should leave 300
+        self.assertEqual(inventory[0]["qty_grams"], 300)
+
+if __name__ == '__main__':
+    unittest.main()

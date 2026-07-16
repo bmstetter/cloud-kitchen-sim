@@ -1,4 +1,4 @@
-### 2. `main.py` 
+## main.py
 from copy import deepcopy
 import seed_data
 
@@ -30,7 +30,7 @@ def calculate_ingredient_requirements(recipe, quantity):
         })
     return requirements
 
-    # Task 5
+# Task 5
 
 def check_inventory_availability(inventory_data, requirements):
     """
@@ -39,15 +39,11 @@ def check_inventory_availability(inventory_data, requirements):
     """
     availability_results = []
     all_available = True
-    
-    # Create a lookup dictionary for ingredients
     inventory_lookup = {item["ingredient"]: item for item in inventory_data}
     
     for req in requirements:
         inv_item = inventory_lookup.get(req["name"])
-        # If the item doesn't exist in inventory, treat available as 0
         available = inv_item["qty_grams"] if inv_item else 0
-        
         is_enough = inv_item is not None and available >= req["required_qty_grams"]
         
         availability_results.append({
@@ -58,6 +54,16 @@ def check_inventory_availability(inventory_data, requirements):
         
         if not is_enough:
             all_available = False
-            
     return {"all_available": all_available, "details": availability_results}
-``
+
+# Task 6
+
+def deduct_inventory(inventory_data, requirements):
+    """
+    Deducts the required grams of each ingredient from the inventory.
+    """
+    inventory_lookup = {item["ingredient"]: item for item in inventory_data}
+    for req in requirements:
+        inv_item = inventory_lookup.get(req["name"])
+        if inv_item:
+            inv_item["qty_grams"] -= req["required_qty_grams"]
